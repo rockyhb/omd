@@ -5,7 +5,7 @@ RUN rpm -Uvh "https://labs.consol.de/repo/testing/rhel6/i386/labs-consol-testing
 RUN rpm -Uvh "https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm"
 RUN yum clean all
 RUN yum -y update
-RUN yum -y install omd which lsof xinetd check-mk-agent git
+RUN yum -y install omd which lsof xinetd check-mk-agent git openssh-server
 RUN omd create prod || true
 RUN omd config prod set TMPFS off
 RUN echo Done.
