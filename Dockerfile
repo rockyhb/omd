@@ -8,5 +8,9 @@ RUN yum -y update
 RUN yum -y install omd which lsof xinetd check-mk-agent git openssh-server
 RUN omd create prod || true
 RUN omd config prod set TMPFS off
+RUN echo "omd" | passwd --stdin root
+RUN echo "omd" | passwd --stdin prod
+RUN chage -d 0 root
+RUN chage -d 0 prod
 RUN echo Done.
 CMD /bin/bash
